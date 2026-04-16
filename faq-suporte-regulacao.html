@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAQ — Suporte do SIMEC</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #f7f8fa;
+    --bg2: #ffffff;
+    --bg3: #f0f2f5;
+    --border: #e2e5eb;
+    --border-hover: #c5cad4;
+    --text: #1a1d23;
+    --text-muted: #4b5060;
+    --text-dim: #9299a8;
+    --accent: #1a6bbf;
+    --accent-light: #e8f0fb;
+    --accent-glow: rgba(26,107,191,0.1);
+    --red: #c0392b;
+    --red-light: #fdf1f0;
+    --amber-light: #fdf8ec;
+    --green: #1e7e4a;
+    --green-light: #edf7f1;
+    --sans: 'Nunito', sans-serif;
+  }
+
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    line-height: 1.6;
+  }
+
+  /* HEADER */
+  header {
+    border-bottom: 1px solid var(--border);
+    padding: 0 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+    position: sticky;
+    top: 0;
+    background: #fff;
+    z-index: 100;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  }
+
+  .header-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .logo-mark {
+    height: 38px;
+    width: auto;
+    display: block;
+    flex-shrink: 0;
+  }
+
+  .header-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-muted);
+  }
+
+  .header-title span {
+    color: var(--text);
+  }
+
+  .badge-live {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--green);
+    background: var(--green-light);
+    border: 1px solid #b6e2cb;
+    border-radius: 20px;
+    padding: 3px 10px;
+  }
+
+  .badge-live::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: var(--green);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.35; }
+  }
+
+  /* LAYOUT */
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 36px 32px 80px;
+  }
+
+  /* SEARCH */
+  .search-wrap {
+    position: relative;
+    margin-bottom: 28px;
+  }
+
+  .search-icon {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-dim);
+    font-size: 15px;
+    pointer-events: none;
+  }
+
+  #search {
+    width: 100%;
+    background: #fff;
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    padding: 13px 16px 13px 42px;
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+
+  #search::placeholder { color: var(--text-dim); }
+
+  #search:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-glow);
+  }
+
+  .search-shortcut {
+    position: absolute;
+    right: 13px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 11px;
+    color: var(--text-dim);
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    padding: 2px 7px;
+  }
+
+  /* STATS BAR */
+  .stats-bar {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+  }
+
+  .stat-chip {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 12.5px;
+    color: var(--text-muted);
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 5px 13px;
+  }
+
+  .stat-chip strong {
+    color: var(--accent);
+    font-weight: 700;
+  }
+
+  /* CATEGORY FILTER */
+  .filter-row {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+  }
+
+  .filter-btn {
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 600;
+    padding: 6px 16px;
+    border-radius: 20px;
+    border: 1.5px solid var(--border);
+    background: #fff;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+
+  .filter-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .filter-btn.active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+  }
+
+  /* SECTION */
+  .section {
+    margin-bottom: 36px;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--border);
+  }
+
+  .section-icon {
+    width: 26px;
+    height: 26px;
+    border-radius: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+
+  .section-icon.blue { background: var(--accent-light); }
+  .section-icon.red  { background: var(--red-light); }
+
+  .section-title {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .section-count {
+    font-size: 12px;
+    color: var(--text-dim);
+    margin-left: auto;
+  }
+
+  /* FAQ ITEM */
+  .faq-item {
+    background: #fff;
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    margin-bottom: 8px;
+    overflow: hidden;
+    transition: border-color 0.15s, box-shadow 0.15s;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+
+  .faq-item:hover {
+    border-color: var(--border-hover);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  }
+
+  .faq-item.open {
+    border-color: var(--accent);
+    box-shadow: 0 2px 10px var(--accent-glow);
+  }
+
+  .faq-q {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 15px 18px;
+    cursor: pointer;
+    user-select: none;
+    list-style: none;
+  }
+
+  .faq-q::-webkit-details-marker { display: none; }
+
+  .faq-tag {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    padding: 3px 8px;
+    border-radius: 5px;
+    text-transform: uppercase;
+    flex-shrink: 0;
+  }
+
+  .tag-acesso { background: var(--accent-light); color: var(--accent); }
+  .tag-indeferimento { background: var(--red-light); color: var(--red); }
+
+  .faq-q-text {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+    flex: 1;
+    line-height: 1.45;
+  }
+
+  .faq-chevron {
+    color: var(--text-dim);
+    font-size: 11px;
+    transition: transform 0.2s;
+    flex-shrink: 0;
+  }
+
+  details[open] .faq-chevron {
+    transform: rotate(180deg);
+  }
+
+  details[open] .faq-q-text {
+    color: var(--accent);
+  }
+
+  .faq-a {
+    padding: 0 18px 18px 18px;
+    border-top: 1px solid var(--border);
+  }
+
+  .faq-a-inner {
+    padding-top: 16px;
+    font-size: 13.5px;
+    color: var(--text-muted);
+    line-height: 1.75;
+  }
+
+  /* Answer elements */
+  .step-list {
+    list-style: none;
+    counter-reset: steps;
+    margin: 8px 0;
+  }
+
+  .step-list li {
+    counter-increment: steps;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    margin-bottom: 9px;
+    font-size: 13.5px;
+    color: var(--text-muted);
+  }
+
+  .step-list li::before {
+    content: counter(steps);
+    font-size: 11px;
+    font-weight: 700;
+    background: var(--accent-light);
+    border-radius: 50%;
+    color: var(--accent);
+    min-width: 22px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1px;
+    flex-shrink: 0;
+  }
+
+  .callout {
+    border-radius: 8px;
+    padding: 10px 13px;
+    font-size: 13px;
+    line-height: 1.6;
+    margin: 10px 0;
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+  }
+
+  .callout-icon { font-size: 14px; flex-shrink: 0; margin-top: 1px; }
+
+  .callout.info   { background: var(--accent-light); border-left: 3px solid var(--accent); color: #1a4a80; }
+  .callout.warn   { background: var(--amber-light);  border-left: 3px solid #d97706;      color: #7a4a00; }
+  .callout.danger { background: var(--red-light);    border-left: 3px solid var(--red);   color: #7a1a10; }
+  .callout.ok     { background: var(--green-light);  border-left: 3px solid var(--green); color: #0f4a28; }
+
+  code {
+    font-size: 12px;
+    font-family: 'Courier New', monospace;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    padding: 2px 7px;
+    color: var(--accent);
+    word-break: break-all;
+  }
+
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 8px 0;
+  }
+
+  .highlight { color: var(--text); font-weight: 700; }
+
+  /* NO RESULTS */
+  #no-results {
+    display: none;
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--text-dim);
+    font-size: 14px;
+  }
+
+  #no-results strong {
+    display: block;
+    font-size: 16px;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+  }
+
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-left">
+    <img class="logo-mark" src="data:image/png;base64,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" alt="Programa Eficiência">
+    <span class="header-title"><span>FAQ</span> — Suporte do SIMEC</span>
+  </div>
+  <div class="badge-live">AO VIVO</div>
+</header>
+
+<div class="container">
+
+  <!-- Search -->
+  <div class="search-wrap">
+    <span class="search-icon">🔍</span>
+    <input type="text" id="search" placeholder="Buscar situação, palavra-chave ou código de erro..." autocomplete="off">
+    <span class="search-shortcut">⌘ K</span>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats-bar">
+    <div class="stat-chip"><strong>12</strong> situações mapeadas</div>
+    <div class="stat-chip"><strong>2</strong> categorias</div>
+    <div class="stat-chip">⏱ <strong>&lt; 30s</strong> tempo médio de consulta</div>
+  </div>
+
+  <!-- Filter -->
+  <div class="filter-row">
+    <button class="filter-btn active" onclick="filterCategory('todos', this)">Todos</button>
+    <button class="filter-btn" onclick="filterCategory('acesso', this)">🔐 Acesso e login</button>
+    <button class="filter-btn" onclick="filterCategory('indeferimento', this)">⛔ Indeferimento</button>
+  </div>
+
+  <div id="faq-content">
+
+    <!-- ======== CATEGORIA: ACESSO E LOGIN ======== -->
+    <div class="section" data-category="acesso">
+      <div class="section-header">
+        <div class="section-icon blue">🔐</div>
+        <span class="section-title">Acesso e login no sistema</span>
+        <span class="section-count">6 situações</span>
+      </div>
+
+      <!-- 1 -->
+      <details class="faq-item">
+        <summary class="faq-q">
+          <span class="faq-tag tag-acesso">acesso</span>
+          <span class="faq-q-text">Usuário não consegue fazer login — "usuário ou senha inválidos"</span>
+          <span class="faq-chevron">▼</span>
+        </summary>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            <div class="callout warn"><span class="callout-icon">⚠️</span> Verificar antes de qualquer ação se o usuário está acessando o ambiente correto (produção x homologação).</div>
+            <ol class="step-list">
+              <li>Confirmar o <span class="highlight">CPF cadastrado</span> — sem pontos ou traços.</li>
+              <li>Orientar a tentar a opção <strong>"Esqueci minha senha"</strong> na tela de login.</li>
+              <li>Checar se a conta está <span class="highlight">bloqueada por tentativas</span> (acima de 5 tentativas o sistema bloqueia por 30 min).</li>
+              <li>Se persistir, abrir chamado para o setor de TI com CPF e unidade do usuário.</li>
+            </ol>
+            <div class="callout info"><span class="callout-icon">💡</span> O desbloqueio manual só pode ser feito pelo administrador do sistema. Tempo estimado: até 2h úteis.</div>
+          </div>
+        </div>
+      </details>
+
+      <!-- 2 -->
+      <details class="faq-item">
+        <summary class="faq-q">
+          <span class="faq-tag tag-acesso">acesso</span>
+          <span class="faq-q-text">Usuário diz que a senha expirou e não sabe como redefinir</span>
+          <span class="faq-chevron">▼</span>
+        </summary>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            <div class="callout info"><span class="callout-icon">ℹ️</span> Senhas expiram a cada <strong>90 dias</strong> por política de segurança.</div>
+            <ol class="step-list">
+              <li>Orientar acesso ao link <code>/resetar-senha</code> na tela inicial do sistema.</li>
+              <li>O e-mail de redefinição vai para o <span class="highlight">endereço cadastrado no perfil</span>. Confirmar se o usuário tem acesso a esse e-mail.</li>
+              <li>Caso não tenha acesso ao e-mail, escalar para o gestor da unidade para atualização do cadastro.</li>
+            </ol>
+            <div class="callout warn"><span class="callout-icon">⚠️</span> Nunca forneça ou redefina senhas diretamente pelo chat. Sempre redirecionar para o fluxo padrão de redefinição.</div>
+          </div>
+        </div>
+      </details>
+
+      <!-- 3 -->
+      <details class="faq-item">
+        <summary class="faq-q">
+          <span class="faq-tag tag-acesso">acesso</span>
+          <span class="faq-q-text">Usuário logou mas não vê o menu / funcionalidades esperadas</span>
+          <span class="faq-chevron">▼</span>
+        </summary>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            <ol class="step-list">
+              <li>Verificar o <span class="highlight">perfil de acesso atribuído</span> ao usuário (regulador, solicitante, visualizador, etc.).</li>
+              <li>Confirmar se o usuário está vinculado à <span class="highlight">unidade correta</span> no cadastro.</li>
+              <li>Checar se há manutenção programada que possa ter impactado permissões.</li>
+              <li>Se o perfil estiver correto e o problema persistir, registrar ocorrência com print de tela.</li>
+            </ol>
+            <div class="callout info"><span class="callout-icon">💡</span> A atribuição ou alteração de perfil deve ser feita pelo <strong>gestor da unidade</strong>, não pelo suporte.</div>
+          </div>
+        </div>
+      </details>
+
+      <!-- 4 -->
+      <details class="faq-item">
+        <summary class="faq-q">
+          <span class="faq-tag tag-acesso">acesso</span>
+          <span class="faq-q-text">Sistema apresenta mensagem de erro ao abrir — tela branca ou travamento</span>
+          <span class="faq-chevron">▼</span>
+        </summary>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            <div class="callout warn"><span class="callout-icon">⚠️</span> Verificar antes se há algum <strong>aviso de indisponibilidade</strong> no canal oficial do sistema.</div>
+            <ol class="step-list">
+              <li>Solicitar que o usuário <span class="highlight">limpe o cache</span> do navegador (<code>Ctrl+Shift+Del</code>) e tente novamente.</li>
+              <li>Testar em outro navegador (recomendado: Chrome ou Edge atualizados).</li>
+              <li>Checar se há extensões bloqueando scripts (AdBlock, etc.).</li>
+              <li>Se o problema for generalizado, acionar equipe de infraestrutura imediatamente.</li>
+            </ol>
+          </div>
+        </div>
+      </details>
+
+      <!-- 5 -->
+      <details class="faq-item">
+        <summary class="faq-q">
+          <span class="faq-tag tag-acesso">acesso</span>
+          <span class="faq-q-text">Usuário recém-cadastrado não consegue acessar pela primeira vez</span>
+          <span class="faq-chevron">▼</span>
+        </summary>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            <ol class="step-list">
+              <li>Confirmar se o cadastro foi <span class="highlight">concluído e aprovado</span> pelo gestor (usuários pendentes não conseguem logar).</li>
+              <li>Verificar se o e-mail de ativação foi enviado — pode estar na pasta de spam.</li>
+              <li>O link de ativação expira em <strong>24 horas</strong>. Se expirado, solicitar reenvio ao gestor.</li>
+              <li>Confirmar que o usuário está definindo senha dentro dos requisitos: mínimo 8 caracteres, 1 maiúscula, 1 número e 1 símbolo.</li>
+            </ol>
+          </div>
+        </div>
+      </details>
+
+      <!-- 6 -->
+      <details class="faq-item">
+        <summary class="faq-q">
+          <span class="faq-tag tag-acesso">acesso</span>
+          <span class="faq-q-text">Usuário ativo na unidade foi desligado — como revogar acesso?</span>
+          <span class="faq-chevron">▼</span>
+        </summary>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            <div class="callout danger"><span class="callout-icon">🚨</span> Caso urgente: usuário com acesso indevido deve ser <strong>suspenso imediatamente</strong>. Escalar com prioridade alta.</div>
+            <ol class="step-list">
+              <li>Gestor da unidade deve acessar <strong>Gerenciar Usuários → Inativar</strong>.</li>
+              <li>Se o gestor não tiver acesso para isso, abrir chamado de <span class="highlight">alta prioridade</span> para administrador do sistema.</li>
+              <li>Registrar no chamado: nome, CPF, unidade e data do desligamento.</li>
+            </ol>
+            <div class="callout info"><span class="callout-icon">ℹ️</span> Usuários inativos não são excluídos — o histórico de ações fica preservado para auditoria.</div>
+          </div>
+        </div>
+      </details>
+    </div>
+
+    <!-- ======== CATEGORIA: INDEFERIMENTO ======== -->
+    <div class="section" data-category="indeferimento">
+      <div class="section-header">
+        <div class="section-icon red">⛔</div>
+        <span class="section-title">Indeferimento de solicitações</span>
+        <span class="section-count">6 situações</span>
+      </div>
+
+      <!-- 9 -->
+      <details class="faq-item">
+        <summary class="faq-q">
+          <span class="faq-tag tag-indeferimento">indeferimento</span>
+          <span class="faq-q-text">Paciente com mais de um pedido para o mesmo procedimento — indeferimento por duplicidade</span>
+          <span class="faq-chevron">▼</span>
+        </summary>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            <div class="callout info"><span class="callout-icon">ℹ️</span> Aplicar quando identificado que um paciente possui mais de um pedido para o mesmo procedimento, evitando duplicidade na fila de regulação.</div>
+
+            <p style="font-size:12px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-dim);margin:14px 0 8px;">Passo 1 — Localização da solicitação</p>
+            <ol class="step-list">
+              <li>No menu lateral esquerdo, acesse a aba <span class="highlight">Solicitações</span> e clique em <strong>Buscar</strong>.</li>
+              <li>Utilize o campo <span class="highlight">CPF do Paciente</span> para filtrar todos os pedidos vinculados àquele usuário.</li>
+              <li>Clique no botão azul <strong>Buscar</strong> no canto direito.</li>
+            </ol>
+
+            <p style="font-size:12px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-dim);margin:14px 0 8px;">Passo 2 — Identificação da duplicidade</p>
+            <ol class="step-list">
+              <li>Na listagem, observe as colunas <span class="highlight">Id</span> e <span class="highlight">Data</span>.</li>
+              <li>Identifique qual solicitação será mantida e qual será indeferida — geralmente mantém-se a mais antiga ou a enviada via <strong>E-sus PEC</strong>, conforme a regra de negócio.</li>
+              <li>Clique no botão azul <strong>Regulado</strong> (ou no ID correspondente) da solicitação que deseja cancelar.</li>
+            </ol>
+
+            <p style="font-size:12px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-dim);margin:14px 0 8px;">Passo 3 — Execução do indeferimento</p>
+            <ol class="step-list">
+              <li>Uma janela suspensa será aberta: <strong>"Indeferir procedimentos para [Nome do Paciente]"</strong>.</li>
+              <li>Marque as <span class="highlight">caixas de seleção</span> ao lado de cada procedimento a ser indeferido (ex: Ecocardiografia, Eletrocardiograma).</li>
+              <li>No campo <strong>Observações</strong>, digite o motivo padrão: <code>Indeferimento solicitado via chat suporte por motivo de duplicidade.</code></li>
+              <li>Clique no botão vermelho <strong>Indeferir</strong> para concluir.</li>
+            </ol>
+
+            <div class="callout danger"><span class="callout-icon">🚨</span> Esta ação é <strong>irreversível</strong>. Confirme os dados do paciente e os procedimentos antes de clicar em Indeferir.</div>
+          </div>
+        </div>
+      </details>
+
+      <!-- 7 -->
+      <details class="faq-item">
+        <summary class="faq-q">
+          <span class="faq-tag tag-indeferimento">indeferimento</span>
+          <span class="faq-q-text">Solicitação indeferida por "documentação incompleta" — o que fazer?</span>
+          <span class="faq-chevron">▼</span>
+        </summary>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            <div class="callout info"><span class="callout-icon">ℹ️</span> O indeferimento por documentação <strong>não cancela definitivamente</strong> a solicitação — permite recurso.</div>
+            <ol class="step-list">
+              <li>Verificar no histórico da solicitação quais documentos foram apontados como faltantes.</li>
+              <li>Orientar o solicitante a reunir a documentação indicada.</li>
+              <li>Acessar a solicitação e usar a opção <strong>"Entrar com Recurso"</strong> para reenvio com os documentos.</li>
+              <li>Prazo para recurso: <span class="highlight">até 30 dias</span> a partir da data do indeferimento.</li>
+            </ol>
+            <div class="callout ok"><span class="callout-icon">✅</span> Informar ao solicitante que o recurso será reanalisado em até 10 dias úteis após o envio.</div>
+          </div>
+        </div>
+      </details>
+
+      <!-- 8 -->
+      <details class="faq-item">
+        <summary class="faq-q">
+          <span class="faq-tag tag-indeferimento">indeferimento</span>
+          <span class="faq-q-text">Solicitação indeferida por "fora do perfil assistencial" da unidade</span>
+          <span class="faq-chevron">▼</span>
+        </summary>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            <ol class="step-list">
+              <li>Explicar que a solicitação requer um serviço que <span class="highlight">não está habilitado</span> na unidade solicitante.</li>
+              <li>Verificar no sistema qual unidade tem habilitação para o procedimento necessário.</li>
+              <li>Orientar o reencaminhamento para a unidade adequada ou para o regulador responsável redirecionamento.</li>
+            </ol>
+            <div class="callout warn"><span class="callout-icon">⚠️</span> Esse indeferimento <strong>não admite recurso direto</strong> — é necessário nova solicitação pela unidade habilitada.</div>
+          </div>
+        </div>
+      </details>
+
+      <!-- 10 -->
+      <details class="faq-item">
+        <summary class="faq-q">
+          <span class="faq-tag tag-indeferimento">indeferimento</span>
+          <span class="faq-q-text">Solicitação indeferida por "CID não compatível com o procedimento"</span>
+          <span class="faq-chevron">▼</span>
+        </summary>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            <div class="callout warn"><span class="callout-icon">⚠️</span> Este é um dos indeferimentos mais frequentes e geralmente tem solução simples.</div>
+            <ol class="step-list">
+              <li>Verificar na solicitação qual CID foi informado e qual procedimento foi solicitado.</li>
+              <li>Consultar a <span class="highlight">tabela de compatibilidade CID x procedimento</span> disponível no módulo de referências do sistema.</li>
+              <li>Orientar o médico solicitante a corrigir o CID ou justificar a indicação clínica na solicitação.</li>
+              <li>Após correção, utilizar <strong>"Entrar com Recurso"</strong> com o laudo/justificativa atualizado.</li>
+            </ol>
+          </div>
+        </div>
+      </details>
+
+      <!-- 11 -->
+      <details class="faq-item">
+        <summary class="faq-q">
+          <span class="faq-tag tag-indeferimento">indeferimento</span>
+          <span class="faq-q-text">Paciente quer saber o motivo do indeferimento — como informar?</span>
+          <span class="faq-chevron">▼</span>
+        </summary>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            <ol class="step-list">
+              <li>Acessar a solicitação e localizar a aba <strong>"Histórico / Pareceres"</strong>.</li>
+              <li>O motivo detalhado fica registrado pelo regulador no momento do indeferimento.</li>
+              <li>Repassar ao paciente o motivo oficial, de forma clara e acessível.</li>
+              <li>Informar sobre o <span class="highlight">direito ao recurso</span> e o prazo disponível.</li>
+            </ol>
+            <div class="callout info"><span class="callout-icon">💡</span> O paciente também pode consultar o status pelo portal do cidadão usando CPF + número da solicitação.</div>
+          </div>
+        </div>
+      </details>
+
+      <!-- 12 -->
+      <details class="faq-item">
+        <summary class="faq-q">
+          <span class="faq-tag tag-indeferimento">indeferimento</span>
+          <span class="faq-q-text">Recurso foi negado novamente — quais são as próximas instâncias?</span>
+          <span class="faq-chevron">▼</span>
+        </summary>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            <div class="callout danger"><span class="callout-icon">🚨</span> Quando o recurso é negado em segunda instância, o caso passa a ser <strong>administrativo</strong> — fora do escopo do suporte técnico.</div>
+            <ol class="step-list">
+              <li>Informar que o suporte técnico não tem alçada para reverter decisões clínicas ou administrativas.</li>
+              <li>Orientar o solicitante a acionar a <span class="highlight">Ouvidoria da Secretaria de Saúde</span> responsável.</li>
+              <li>Caso haja indicação de urgência ou risco de vida, orientar acesso via <strong>regulação de urgência</strong> (fluxo diferenciado).</li>
+              <li>Registrar o atendimento no sistema de chamados com todos os dados para rastreabilidade.</li>
+            </ol>
+          </div>
+        </div>
+      </details>
+
+    </div>
+  </div>
+
+  <div id="no-results">
+    <strong>Nenhuma situação encontrada</strong>
+    Tente palavras-chave diferentes ou selecione outra categoria.
+  </div>
+
+</div>
+
+<script>
+  // Search
+  const search = document.getElementById('search');
+  const noResults = document.getElementById('no-results');
+  const items = document.querySelectorAll('.faq-item');
+  const sections = document.querySelectorAll('.section');
+
+  search.addEventListener('input', function() {
+    const q = this.value.toLowerCase().trim();
+    let visible = 0;
+
+    items.forEach(item => {
+      const text = item.textContent.toLowerCase();
+      const match = !q || text.includes(q);
+      item.style.display = match ? '' : 'none';
+      if (match) visible++;
+    });
+
+    sections.forEach(section => {
+      const anyVisible = [...section.querySelectorAll('.faq-item')]
+        .some(i => i.style.display !== 'none');
+      section.style.display = anyVisible ? '' : 'none';
+    });
+
+    noResults.style.display = visible === 0 ? 'block' : 'none';
+  });
+
+  // Keyboard shortcut
+  document.addEventListener('keydown', e => {
+    if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+      e.preventDefault();
+      search.focus();
+      search.select();
+    }
+  });
+
+  // Category filter
+  function filterCategory(cat, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    sections.forEach(section => {
+      if (cat === 'todos' || section.dataset.category === cat) {
+        section.style.display = '';
+      } else {
+        section.style.display = 'none';
+      }
+    });
+
+    items.forEach(item => item.style.display = '');
+    noResults.style.display = 'none';
+    search.value = '';
+  }
+
+  // Open state class
+  document.querySelectorAll('details').forEach(d => {
+    d.addEventListener('toggle', () => {
+      d.classList.toggle('open', d.open);
+    });
+  });
+</script>
+</body>
+</html>
