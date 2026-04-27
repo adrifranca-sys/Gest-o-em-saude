@@ -302,6 +302,7 @@
 
   .tag-acesso { background: var(--accent-light); color: var(--accent); }
   .tag-indeferimento { background: var(--red-light); color: var(--red); }
+  .tag-boleto { background: var(--gray-light); color: var(--gray); }
 
   .faq-q-text {
     font-size: 14px;
@@ -445,12 +446,6 @@
     <span class="search-icon">🔍</span>
     <input type="text" id="search" placeholder="Buscar situação, palavra-chave ou código de erro..." autocomplete="off">
     <span class="search-shortcut">⌘ K</span>
-  </div>
-
-  <!-- Stats -->
-  <div class="stats-bar">
-    <div class="stat-chip"><strong>12</strong> situações mapeadas</div>
-    <div class="stat-chip"><strong>2</strong> categorias</div>
   </div>
 
   <!-- Filter -->
@@ -629,7 +624,8 @@
             <ol class="step-list">
               <li>Uma janela suspensa será aberta: <strong>"Indeferir procedimentos para [Nome do Paciente]"</strong>.</li>
               <li>Marque as <span class="highlight">caixas de seleção</span> ao lado de cada procedimento a ser indeferido (ex: Ecocardiografia, Eletrocardiograma).</li>
-              <li>No campo <strong>Observações</strong>, digite o motivo padrão: <code>Indeferimento solicitado via chat suporte por motivo de duplicidade.</code></li>
+              <li>No campo <strong>Observações</strong>, digite o motivo padrão:
+               <code>Indeferimento solicitado via chat suporte por motivo de duplicidade.</code></li>
               <li>Clique no botão vermelho <strong>Indeferir</strong> para concluir.</li>
             </ol>
 
@@ -766,14 +762,14 @@
             <ol class="step-list">
              
               <li>Solicite o CPF do paciente e, se possível, o ID da solicitação.</li>
-              <li>Acesse o link "https://juazeirodonorte.simec.prefeituramunicipal.digital/consultations" e insira o CPF do paciente no campo <span class="highlight">Digite seu CPF</span></li>
+              <li>Acesse o link "https://juazeirodonorte.simec.prefeituramunicipal.digital/consultations" e insira o CPF do paciente no campo <strong>Digite seu CPF</strong>.</li>
             </ol>
              
              <p style="font-size:12px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-dim);margin:14px 0 8px;">Passo 2 — Identificação da solicitação e senha</p>
             <ol class="step-list">
              
               <li>Na listagem, observe as colunas <span class="highlight">Id</span> e <span class="highlight">Data</span>.</li>
-              <li>Identifique qual solicitação que o solicitante está se referindo de acordo com o ID e data.</li>
+              <li>Identifique qual solicitação que o solicitante está se referindo.</li>
               <li>Clique no botão azul <strong>Visualizar</strong>.</li>
               <li>Desça até o final da página, e em <strong>Vagas marcadas</strong>, clique no botão verde <strong>Imprimir</strong>.</li>
             </ol>
